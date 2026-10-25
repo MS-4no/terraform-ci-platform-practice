@@ -1,4 +1,5 @@
 # Terraform configuration for CI practice
+# main.tf にコメントを追加して保存
 
 terraform {
   required_version = ">= 1.0.0"
