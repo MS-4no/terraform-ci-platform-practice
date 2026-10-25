@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      TF_PLUGIN_CACHE_DIR: ${{ runner.temp }}/terraform-plugin-cache
+      TF_PLUGIN_CACHE_DIR: ${{ github.workspace }}/.terraform-plugin-cache
 
     steps:
       - name: Checkout repository
@@ -26,7 +26,7 @@ jobs:
       - name: Cache Terraform providers
         uses: actions/cache@v6
         with:
-          path: ${{ runner.temp }}/terraform-plugin-cache
+          path: ${{ github.workspace }}/.terraform-plugin-cache
           key: ${{ runner.os }}-terraform-providers-${{ hashFiles('**/.terraform.lock.hcl') }}
           restore-keys: |
             ${{ runner.os }}-terraform-providers-
