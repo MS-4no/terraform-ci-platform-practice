@@ -1,4 +1,3 @@
-
 name: Terraform Quality
 
 on:
@@ -11,12 +10,26 @@ jobs:
   terraform-quality:
     runs-on: ubuntu-latest
 
+    env:
+      TF_PLUGIN_CACHE_DIR: ${{ runner.temp }}/terraform-plugin-cache
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v4
+
+      - name: Create Terraform plugin cache directory
+        run: mkdir -p "$TF_PLUGIN_CACHE_DIR"
+
+      - name: Cache Terraform providers
+        uses: actions/cache@v6
+        with:
+          path: ${{ runner.temp }}/terraform-plugin-cache
+          key: ${{ runner.os }}-terraform-providers-${{ hashFiles('**/.terraform.lock.hcl') }}
+          restore-keys: |
+            ${{ runner.os }}-terraform-providers-
 
       - name: Check formatting
         run: terraform fmt -check -recursive
