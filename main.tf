@@ -1,4 +1,4 @@
-# Terraform configuration for CI practice
+# Test Terraform provider cache workflow
 
 terraform {
   required_version = ">= 1.0.0"
