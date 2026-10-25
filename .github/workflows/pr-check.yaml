@@ -8,4 +8,4 @@ permissions:
 
 jobs:
   terraform-quality:
-    uses: ./.github/workflows/terraform-quality.yml
+    uses: ./.github/workflows/terraform-quality.yaml
