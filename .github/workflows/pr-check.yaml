@@ -2,6 +2,8 @@ name: Terraform PR Check
 
 on:
   pull_request:
+    paths:
+      - '**/*.tf'
 
 permissions:
   contents: read
