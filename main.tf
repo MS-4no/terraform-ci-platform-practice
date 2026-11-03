@@ -1,5 +1,5 @@
 # Test Terraform provider cache workflow
-# Second
+# Terraform provider cache test
 
 terraform {
   required_version = ">= 1.0.0"
